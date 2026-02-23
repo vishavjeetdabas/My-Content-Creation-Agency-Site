@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowFrame — Endless Viral Content Without Filming a Single Video</title>
+    <meta name="description"
+        content="Done-for-you short-form content for busy entrepreneurs. Get viral content in just 3 hours a month — no filming needed.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Netlify Identity Widget (for CMS login) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+    <!-- Cursor Light Effect -->
+    <div class="cursor-light"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- ========================
+         POPUP MODAL
+    ========================= -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-modal">
+            <button class="popup-close" id="popup-close" aria-label="Close popup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2 class="popup-title">Ready to <span class="gradient-text">Scale?</span></h2>
+            <p class="popup-subtitle">Request a call and we'll get back to you.</p>
+
+            <form class="popup-form" id="popup-form">
+                <div class="form-group">
+                    <input type="text" id="popup-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="popup-email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="popup-phone" placeholder="Phone / WhatsApp Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="url" id="popup-website" placeholder="Website / Social Link (Optional)">
+                </div>
+                <button type="submit" class="popup-submit">
+                    <span>Request a Call</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <p class="popup-privacy">
+                <i class="fa-solid fa-lock"></i>
+                Your information is secure and will never be shared.
+            </p>
+        </div>
+    </div>
+
+    <!-- ========================
+         HEADER / NAVIGATION
+    ========================= -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <a href="#" class="header-logo">
+                <img src="flowframe logo v.png" alt="FlowFrame" class="logo-image logo-full">
+            </a>
+
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <a href="#contact" class="header-cta">
+                    Get Started <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </nav>
+
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========================
+         HERO SECTION
+    ========================= -->
+    <section class="hero-section" id="hero">
+        <!-- Background Elements -->
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+
+        <!-- Sparkle Decorations -->
+        <svg class="sparkle sparkle-sm" style="top: 15%; right: 22%; animation-delay: 1s;" viewBox="0 0 24 24" fill="rgba(56,189,248,0.35)">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/>
+        </svg>
+        <svg class="sparkle sparkle-sm" style="top: 70%; left: 8%; animation-delay: 2s;" viewBox="0 0 24 24" fill="rgba(56,189,248,0.25)">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/>
+        </svg>
+        <svg class="sparkle sparkle-sm" style="top: 35%; left: 15%; animation-delay: 0.5s;" viewBox="0 0 24 24" fill="rgba(56,189,248,0.2)">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/>
+        </svg>
+        <svg class="sparkle sparkle-sm" style="top: 55%; right: 12%; animation-delay: 1.8s;" viewBox="0 0 24 24" fill="rgba(56,189,248,0.3)">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/>
+        </svg>
+        <svg class="sparkle sparkle-sm" style="top: 82%; right: 30%; animation-delay: 2.5s;" viewBox="0 0 24 24" fill="rgba(56,189,248,0.2)">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/>
+        </svg>
+
+        <div class="hero-full-width">
+
+            <!-- Center Content -->
+            <div class="hero-center">
+
+                <div class="hero-headline fade-in delay-1">
+                    <img src="pic v3.png" alt="Helping Founders Grow Through Content" class="hero-headline-img">
+                </div>
+
+                <p class="hero-description fade-in delay-2">
+                    Even if you're too busy or camera shy — we handle everything so you
+                    can focus on running your business. No recording needed.
+                </p>
+
+                <div class="cta-wrapper fade-in delay-3">
+                    <a href="#contact" class="btn-primary btn-dominant">
+                        <span>Book a Free Consultation Call</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Micro Trust Text -->
+                <p class="micro-trust fade-in delay-4">
+                    Trusted by entrepreneurs & personal brands across the globe
+                </p>
+
+                <!-- Trust Indicators -->
+                <div class="hero-trust-row fade-in delay-4">
+                    <div class="trust-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>50M+ Views Generated</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>10+ Happy Clients</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>30-Day Results Guarantee</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ========================
+         RESULTS / CASE STUDIES
+    ========================= -->
+    <section class="results-section" id="results">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-badge">Proven Results</span>
+                <h2 class="section-title">Real Client <span class="gradient-text">Transformations</span></h2>
+                <p class="section-subtitle">Business owners, entrepreneurs, and professionals who trusted us — and got
+                    results</p>
+            </div>
+
+            <div class="video-carousel animate-on-scroll">
+                <div class="video-carousel-track" id="video-carousel-track">
+                    <!-- Video Card 1 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/Perplexity_ad.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 2 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/sam_altman _tweet.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 3 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/week_15_updates.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 4 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/Gemini_2.5_update.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 5 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/hp_ad.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 6 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/snapchat_ad.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 7 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/week_16_updates.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 8 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/gpt_6.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                    <!-- Video Card 9 -->
+                    <div class="video-card">
+                        <video class="video-embed" src="videos/elon_musk.mp4" muted loop playsinline preload="metadata"></video>
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div class="video-carousel-nav">
+                    <button class="carousel-arrow carousel-prev" id="carousel-prev" aria-label="Previous">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div class="carousel-dots" id="carousel-dots">
+                        <span class="carousel-dot active"></span>
+                        <span class="carousel-dot"></span>
+                        <span class="carousel-dot"></span>
+                    </div>
+                    <button class="carousel-arrow carousel-next" id="carousel-next" aria-label="Next">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <p class="animate-on-scroll"
+                style="text-align: center; margin-top: 40px; font-size: clamp(28px, 4vw, 42px); font-weight: 800; font-family: 'Montserrat', sans-serif;">
+                <span class="gradient-text">&</span> Many more
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================
+         SERVICES / PRICING
+    ========================= -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-badge">Our Services</span>
+                <h2 class="section-title">Choose Your <span class="gradient-text">Growth Path</span></h2>
+                <p class="section-subtitle">Tailored packages to match your ambition — from getting started to going all
+                    in</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter Package -->
+                <div class="pricing-card animate-on-scroll" data-delay="1">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Starter</h3>
+                        <p class="pricing-desc">Start building your personal brand</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Monthly content strategy
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                8 pieces of content/month
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Basic analytics reports
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Email support
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn-secondary" style="width: 100%; justify-content: center;">Get
+                        Started</a>
+                </div>
+
+                <!-- Growth Package (Featured) -->
+                <div class="pricing-card pricing-featured animate-on-scroll" data-delay="2">
+                    <span class="pricing-badge">Most Popular</span>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Growth</h3>
+                        <p class="pricing-desc">For entrepreneurs ready to dominate their niche</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Everything in Starter
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                20 pieces of content/month
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Advanced viral hooks
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Weekly strategy calls
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Priority support
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn-primary" style="width: 100%; justify-content: center;">Start
+                        Growing</a>
+                </div>
+
+                <!-- Scale Package -->
+                <div class="pricing-card animate-on-scroll" data-delay="3">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Scale</h3>
+                        <p class="pricing-desc">The full done-for-you brand machine</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Everything in Growth
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Unlimited content
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Brand partnerships
+                            </li>
+                            <li>
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Dedicated account manager
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn-secondary" style="width: 100%; justify-content: center;">Contact
+                        Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         PROCESS TIMELINE
+    ========================= -->
+    <section class="process-section" id="process">
+        <!-- Background Glows -->
+        <div class="gradient-orb" style="top: 0; left: -200px; width: 600px; height: 600px;"></div>
+        <div class="gradient-orb"
+            style="bottom: 0; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.15), transparent 70%);">
+        </div>
+
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-badge">Here's Exactly How We Do It</span>
+                <h2 class="section-title">Your <span class="gradient-text">Success Roadmap</span></h2>
+                <p class="section-subtitle">We deliver everything you need to build your personal brand without
+                    overwhelming your schedule.</p>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Timeline Line -->
+                <div class="timeline-line-bg"></div>
+                <div class="timeline-line-fill" id="timeline-fill"></div>
+
+                <!-- Step 1 -->
+                <div class="timeline-item" data-step="1">
+                    <div class="timeline-content-side">
+                        <div class="timeline-card">
+                            <span class="step-number-bg">01</span>
+                            <div class="step-details">
+                                <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <h3>Discovery Call</h3>
+                                <p>We dive deep into your brand, audience, and goals to craft a content
+                                    strategy tailored to your unique voice. No guesswork — just alignment.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-empty-side">
+                        <div class="timeline-image-card">
+                            <img src="images/discovery call.jpg" alt="Discovery Call" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="timeline-item" data-step="2">
+                    <div class="timeline-empty-side">
+                        <div class="timeline-image-card">
+                            <img src="images/content strategy.jpg" alt="Content Strategy" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content-side">
+                        <div class="timeline-card">
+                            <span class="step-number-bg">02</span>
+                            <div class="step-details">
+                                <div class="step-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <h3>Content Strategy</h3>
+                                <p>Our team builds a comprehensive content plan loaded with viral hooks, trending
+                                    formats, and engagement triggers designed to stop the scroll.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-item" data-step="3">
+                    <div class="timeline-content-side">
+                        <div class="timeline-card">
+                            <span class="step-number-bg">03</span>
+                            <div class="step-details">
+                                <div class="step-icon"><i class="fa-solid fa-video"></i></div>
+                                <h3>Content Creation</h3>
+                                <p>We handle all content production — scripting, editing, and optimization — so
+                                    you never have to touch a camera.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-empty-side">
+                        <div class="timeline-image-card">
+                            <img src="images/content creation.jpg" alt="Content Creation" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-item" data-step="4">
+                    <div class="timeline-empty-side">
+                        <div class="timeline-image-card">
+                            <img src="images/launch.jpg" alt="Launch & Scale" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content-side">
+                        <div class="timeline-card">
+                            <span class="step-number-bg">04</span>
+                            <div class="step-details">
+                                <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+                                <h3>Launch & Scale</h3>
+                                <p>We post, analyze, and optimize everything. Your brand grows on autopilot while
+                                    you focus on closing deals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         CALCULATOR SECTION
+    ========================= -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-badge">ROI Calculator</span>
+                <h2 class="section-title">See Your <span class="gradient-text">Potential Growth</span></h2>
+                <p class="section-subtitle">Calculate the impact of professional content on your brand</p>
+            </div>
+
+            <div class="calculator-wrapper animate-on-scroll">
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label>Current Monthly Followers</label>
+                        <input type="range" id="followers-input" min="1000" max="100000" value="10000" step="1000">
+                        <span class="range-display" id="followers-display">10,000</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Average Views Per Post</label>
+                        <input type="range" id="views-input" min="100" max="50000" value="5000" step="100">
+                        <span class="range-display" id="views-display">5,000</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Product/Service Value ($)</label>
+                        <input type="range" id="value-input" min="50" max="10000" value="500" step="50">
+                        <span class="range-display" id="value-display">$500</span>
+                    </div>
+                </div>
+
+                <div class="calculator-results">
+                    <div class="result-box">
+                        <span class="result-label">Projected Monthly Followers</span>
+                        <span class="result-value" id="result-followers">35,000</span>
+                    </div>
+
+                    <div class="result-box highlight">
+                        <span class="result-label">Estimated Monthly Revenue</span>
+                        <span class="result-value" id="result-revenue">$12,500</span>
+                    </div>
+
+                    <div class="result-box">
+                        <span class="result-label">Potential Yearly Growth</span>
+                        <span class="result-value" id="result-growth">350%</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#contact" class="btn-primary">Unlock This Growth</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         FAQ SECTION
+    ========================= -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-badge">Got Questions?</span>
+                <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll" data-delay="1">
+                    <div class="faq-question">
+                        <span>Do I need to create the content myself?</span>
+                        <div class="faq-toggle"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely not. We handle everything — from strategy and scripting to editing and posting.
+                            You just show up for a quick monthly alignment call.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll" data-delay="2">
+                    <div class="faq-question">
+                        <span>How does FlowFrame ensure the content sounds like me?</span>
+                        <div class="faq-toggle"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We study your voice, personality, and brand positioning during our Discovery Call. Every
+                            piece of content is crafted to feel authentically you — your audience will never know
+                            the difference.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll" data-delay="3">
+                    <div class="faq-question">
+                        <span>How much time will I need to invest each month?</span>
+                        <div class="faq-toggle"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>About 3 hours total. One alignment call and a quick review. That's it — we handle
+                            the rest so your time stays focused on running your business.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll" data-delay="4">
+                    <div class="faq-question">
+                        <span>What if I'm not happy with the content?</span>
+                        <div class="faq-toggle"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unlimited revisions until you're 100% satisfied. We don't cut corners and we don't
+                            move on until it's right. Your success is our success.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll" data-delay="5">
+                    <div class="faq-question">
+                        <span>How long until I see results?</span>
+                        <div class="faq-toggle"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most clients see noticeable growth within 30 days. By 90 days, you'll wonder why
+                            you didn't start sooner.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         FINAL CTA
+    ========================= -->
+    <section class="final-cta-section" id="contact">
+        <div class="cta-glow"></div>
+
+        <div class="container">
+            <div class="final-cta-content animate-on-scroll">
+                <div class="scarcity-badge">
+                    <i class="fa-solid fa-fire"></i>
+                    <span>We only take on 5 new clients per month</span>
+                </div>
+
+                <h2 class="cta-headline">
+                    Ready to Build a <span style="color: #22d3ee;">Brand</span>
+                </h2>
+
+                <p class="cta-subtext">
+                    Book your free consultation call and discover how we turn busy entrepreneurs into content-powered
+                    authorities — in just 3 hours a month.
+                </p>
+
+                <a href="#" class="cta-button">
+                    <span>Book Your Free Consultation Call</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <p style="margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.5);">
+                    <i class="fa-solid fa-lock" style="margin-right: 5px;"></i>
+                    No commitment required. 100% free consultation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         FOOTER
+    ========================= -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo-badge">
+                        <img src="flowframe logo v.png" alt="FlowFrame" class="badge-logo" style="height: 45px; width: auto;">
+                    </div>
+                    <p>Building personal brands that attract clients, grow revenue, and scale on autopilot.</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#results">Results</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#process">Process</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/sunny_dabas0099" target="_blank" class="social-icon" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/dabas0099/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlowFrame. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+    <!-- Netlify Identity Redirect -->
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

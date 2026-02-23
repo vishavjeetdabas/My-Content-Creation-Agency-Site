@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Local backend for testing (comment out for production)
+# local_backend: true
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "content/settings.json"
+        fields:
+          - { label: "Site Name", name: "siteName", widget: "string", default: "FlowFrame" }
+          - { label: "Hero Badge Text", name: "heroBadge", widget: "string", default: "Trusted by 50+ Growing Brands" }
+          - { label: "Hero Headline", name: "heroHeadline", widget: "string", default: "We make your business impossible to ignore." }
+          - { label: "Hero Description", name: "heroDescription", widget: "text" }
+          - { label: "Founder Photo", name: "founderPhoto", widget: "image" }
+          - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedinUrl", widget: "string" }
+
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "FontAwesome class e.g. fa-solid fa-video" }
+
+  - name: "faq"
+    label: "FAQ"
+    folder: "content/faq"
+    create: true
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "text" }
+      - { label: "Order", name: "order", widget: "number" }
