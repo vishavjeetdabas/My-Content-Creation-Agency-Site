@@ -2203,6 +2203,7 @@ img {
 
     .video-carousel-track {
         gap: 20px;
+        padding: 20px 7.5%;
     }
 }
 

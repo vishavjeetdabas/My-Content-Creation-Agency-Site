@@ -287,24 +287,100 @@
     const carouselTrack = document.getElementById('video-carousel-track');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
-    const dots = document.querySelectorAll('.carousel-dot');
+    const dotsContainer = document.getElementById('carousel-dots');
 
     if (carouselTrack && prevBtn && nextBtn) {
+        const cards = Array.from(carouselTrack.querySelectorAll('.video-card'));
+        const touchLikeDevice = window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches;
         let currentPage = 0;
-        const cardsPerPage = 3;
-        const totalPages = dots.length;
+        let cardsPerPage = 3;
+        let totalPages = 1;
+        let dots = [];
+
+        const safePlay = (video) => {
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => { });
+            }
+        };
+
+        // Ensure autoplay works on mobile browsers.
+        cards.forEach(card => {
+            const video = card.querySelector('video');
+            if (!video) return;
+            video.muted = true;
+            video.defaultMuted = true;
+            video.loop = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('autoplay', '');
+        });
+
+        const getCardsPerPage = () => {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 968) return 2;
+            return 3;
+        };
+
+        const buildDots = () => {
+            if (!dotsContainer) return [];
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalPages; i += 1) {
+                const dot = document.createElement('span');
+                dot.className = 'carousel-dot';
+                dot.dataset.page = String(i);
+                if (i === currentPage) dot.classList.add('active');
+                dotsContainer.appendChild(dot);
+            }
+            return Array.from(dotsContainer.querySelectorAll('.carousel-dot'));
+        };
+
+        const updateVisibleVideoPlayback = () => {
+            if (!touchLikeDevice) return;
+            const startIndex = currentPage * cardsPerPage;
+            const endIndex = startIndex + cardsPerPage;
+
+            cards.forEach((card, index) => {
+                const video = card.querySelector('video');
+                if (!video) return;
+
+                if (index >= startIndex && index < endIndex) {
+                    safePlay(video);
+                } else {
+                    video.pause();
+                }
+            });
+        };
 
         const updateCarousel = () => {
-            const card = carouselTrack.querySelector('.video-card');
-            if (!card) return;
-            const cardWidth = card.offsetWidth;
-            const gap = 30;
-            const offset = currentPage * cardsPerPage * (cardWidth + gap);
+            if (cards.length === 0) return;
+
+            cardsPerPage = getCardsPerPage();
+            totalPages = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+            currentPage = Math.min(currentPage, totalPages - 1);
+            dots = buildDots();
+
+            const pageFirstCardIndex = currentPage * cardsPerPage;
+            const pageFirstCard = cards[pageFirstCardIndex] || cards[0];
+            const carouselViewport = carouselTrack.parentElement;
+            const maxOffset = Math.max(0, carouselTrack.scrollWidth - carouselViewport.clientWidth);
+            let offset = pageFirstCard.offsetLeft;
+
+            // On single-card mobile view, center the card in the viewport.
+            if (cardsPerPage === 1) {
+                offset -= (carouselViewport.clientWidth - pageFirstCard.offsetWidth) / 2;
+            }
+
+            offset = Math.max(0, Math.min(offset, maxOffset));
             carouselTrack.style.transform = `translateX(-${offset}px)`;
 
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentPage);
             });
+
+            updateVisibleVideoPlayback();
         };
 
         nextBtn.addEventListener('click', () => {
@@ -317,28 +393,39 @@
             updateCarousel();
         });
 
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                currentPage = i;
+        if (dotsContainer) {
+            dotsContainer.addEventListener('click', (e) => {
+                const dot = e.target.closest('.carousel-dot');
+                if (!dot) return;
+                currentPage = Number(dot.dataset.page || 0);
                 updateCarousel();
             });
-        });
+        }
+
+        // Desktop behavior: play on hover.
+        if (!touchLikeDevice) {
+            cards.forEach(card => {
+                const video = card.querySelector('video');
+                if (!video) return;
+
+                card.addEventListener('mouseenter', () => safePlay(video));
+                card.addEventListener('mouseleave', () => video.pause());
+            });
+        } else {
+            // Touch fallback: tap to toggle current video.
+            cards.forEach(card => {
+                const video = card.querySelector('video');
+                if (!video) return;
+
+                video.addEventListener('click', () => {
+                    if (video.paused) safePlay(video);
+                    else video.pause();
+                });
+            });
+        }
 
         window.addEventListener('resize', updateCarousel);
-
-        // Play video on hover, pause on leave
-        carouselTrack.querySelectorAll('.video-card').forEach(card => {
-            const video = card.querySelector('video');
-            if (!video) return;
-
-            card.addEventListener('mouseenter', () => {
-                video.play();
-            });
-
-            card.addEventListener('mouseleave', () => {
-                video.pause();
-            });
-        });
+        updateCarousel();
     }
 
     // =========================================
