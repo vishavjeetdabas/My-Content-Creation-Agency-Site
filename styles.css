@@ -2459,6 +2459,36 @@ img {
     margin-bottom: var(--space-xl);
 }
 
+.cal-inline-booking {
+    width: min(100%, 920px);
+    margin: 0 auto;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+}
+
+.cal-inline-booking iframe {
+    width: 100%;
+    height: 760px;
+    border: 0;
+    display: block;
+    background: #ffffff;
+}
+
+.cal-inline-link {
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.cal-inline-link a {
+    color: #67e8f9;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .cta-button {
     display: inline-flex;
     align-items: center;
@@ -2629,6 +2659,10 @@ img {
     .footer-credit {
         margin-top: 14px;
         font-size: 11px;
+    }
+
+    .cal-inline-booking iframe {
+        height: 620px;
     }
 }
 
