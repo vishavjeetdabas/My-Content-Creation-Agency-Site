@@ -2591,6 +2591,20 @@ img {
     color: var(--color-accent);
 }
 
+.footer-credit {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-credit span {
+    color: #67e8f9;
+    font-weight: 700;
+}
+
 @media (max-width: 768px) {
     .footer-top {
         flex-direction: column;
@@ -2604,6 +2618,11 @@ img {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+    }
+
+    .footer-credit {
+        margin-top: 14px;
+        font-size: 11px;
     }
 }
 
